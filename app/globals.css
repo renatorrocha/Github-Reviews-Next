@@ -83,4 +83,9 @@
   .login-desktop-background {
     background-image: url('/bg-login-desktop.svg');
   }
+
+  .dashboard-background {
+    background-image: url('/bg-dashboard.svg');
+  }
+
 }

@@ -7,13 +7,19 @@ import Link from "next/link";
 
 interface IButtonComponent {
   text: string;
+  href: string;
+  isLogin?: boolean;
 }
 
-export default function ButtonComponent({ text }: IButtonComponent) {
+export default function ButtonComponent({
+  text,
+  href,
+  isLogin,
+}: IButtonComponent) {
   return (
-    <Link href="/dashboard">
-      <Button className="gap-2 rounded-lg text-2xl font-light ">
-        <GithubIcon className="fill-white" />
+    <Link href={href}>
+      <Button className="w-full min-w-64 gap-2 rounded-lg text-2xl font-light ">
+        {isLogin && <GithubIcon className=" fill-white" />}
         {text}
       </Button>
     </Link>
