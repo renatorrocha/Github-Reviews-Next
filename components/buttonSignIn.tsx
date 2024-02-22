@@ -10,7 +10,7 @@ export default function ButtonSignIn() {
       onClick={() => signIn()}
       className="w-full min-w-64 gap-2 rounded-lg text-2xl font-light transition-all duration-300 hover:scale-105 "
     >
-      <GithubIcon className=" fill-white" />
+      <GithubIcon className="fill-white" />
       Login com Github
     </Button>
   );
