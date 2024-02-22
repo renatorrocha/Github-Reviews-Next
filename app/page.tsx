@@ -1,8 +1,17 @@
-import ButtonComponent from "@/components/buttonComponent";
+import ButtonSignIn from "@/components/buttonSignIn";
+import { authConfig } from "@/lib/auth";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-export default function Login() {
+export default async function Login() {
+  const session = await getServerSession(authConfig);
+
+  console.log("Session: ", session);
+
+  if (session) return redirect("/dashboard");
+
   return (
-    <main className="login-mobile-background md:login-desktop-background  w-full max-w-screen-2xl flex h-screen mx-auto flex-col items-center bg-bottom bg-no-repeat px-4 md:justify-center md:bg-left-bottom md:px-14 xl:px-36">
+    <main className="login-mobile-background md:login-desktop-background  mx-auto flex h-screen w-full max-w-screen-2xl flex-col items-center bg-bottom bg-no-repeat px-4 md:justify-center md:bg-left-bottom md:px-14 xl:px-36">
       <div className="space-y-14 pb-12 pt-24">
         <h1 className="text-center text-3xl leading-none text-text-dark md:text-6xl lg:text-7xl xl:text-8xl">
           Desbloqueie o poder da{" "}
@@ -16,11 +25,7 @@ export default function Login() {
         </p>
       </div>
 
-      <ButtonComponent
-        text="Login com Github"
-        href="/dashboard"
-        isLogin={true}
-      />
+      <ButtonSignIn />
     </main>
   );
 }
